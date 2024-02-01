@@ -16,7 +16,7 @@ class OracleInstancePrep:
 		}
 		self.compute_client = oci.core.ComputeClient(self.oracle_config)
 
-		if not os.path.exists('./config.json'):
+		if not os.path.exists('./keys/config.json'):
 			self.INSTANCE_NAME = os.getenv("INSTANCE_NAME")
 			if not self.INSTANCE_NAME.strip(): self.INSTANCE_NAME = "ORACLE-VPS"
 
@@ -51,11 +51,11 @@ class OracleInstancePrep:
 			self.public_key = self.gen_keypair()
 
 			# save all needed details for the instance to config.json so that it can be used later
-			with open('./config.json', 'w') as f:
+			with open('./keys/config.json', 'w') as f:
 				f.write(f'{{"vcn_id": "{self.vcn_id}", "subnet_id": "{self.subnet_id}", "gateway_id": "{self.gateway_id}", "public_key": "{self.public_key}", "image_id": "{self.image_id}", "av_domain": "{self.av_domain}", "compartment_id": "{self.compartment_id}", "name": "{self.INSTANCE_NAME}"}}, "vnic_name": "{self.VNIC_NAME}"')
 		else:
 			print("Recovering instance details from config.json...")
-			with open('./config.json', 'r') as f:
+			with open('./keys/config.json', 'r') as f:
 				config = json.load(f)
 				self.vcn_id = config['vcn_id']
 				self.subnet_id = config['subnet_id']
