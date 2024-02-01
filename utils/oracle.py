@@ -21,20 +21,20 @@ class OracleInstancePrep:
 		self.compute_client = oci.core.ComputeClient(self.oracle_config)
 
 		if not os.path.exists('./config.json'):
-			self.INSTANCE_NAME = input("Enter the name of the instance (Default is ORACLE-VPN): ")
-			if not self.INSTANCE_NAME.strip(): self.INSTANCE_NAME = "ORACLE-VPN"
+			self.INSTANCE_NAME = os.getenv("INSTANCE_NAME")
+			if not self.INSTANCE_NAME.strip(): self.INSTANCE_NAME = "ORACLE-VPS"
 
-			self.VCN_NAME = input("Enter the name of the VCN (Default is ORACLE-VCN): ")
+			self.VCN_NAME = os.getenv("VCN_NAME")
 			if not self.VCN_NAME.strip(): self.VCN_NAME = "ORACLE-VCN"
 
-			self.SUBNET_NAME = input("Enter the name of the subnet (Default is ORACLE-SUBNET): ")
+			self.SUBNET_NAME = os.getenv("SUBNET_NAME")
 			if not self.SUBNET_NAME.strip(): self.SUBNET_NAME = "ORACLE-SUBNET"
 
-			self.GATEWAY_NAME = input("Enter the name of the gateway (Default is ORACLE-GW): ")
+			self.GATEWAY_NAME = os.getenv("GATEWAY_NAME")
 			if not self.GATEWAY_NAME.strip(): self.GATEWAY_NAME = "ORACLE-GW"
 
-			self.VNIC_NAME = input("Enter the name of the VNIC (Default is ORACLE-VPN-VNIC): ")
-			if not self.VNIC_NAME.strip(): self.VNIC_NAME = "ORACLE-VPN-VNIC"
+			self.VNIC_NAME = os.getenv("VNIC_NAME")
+			if not self.VNIC_NAME.strip(): self.VNIC_NAME = "ORACLE-VPS-VNIC"
 
 
 			self.compartment_id = self.oracle_config['tenancy']
