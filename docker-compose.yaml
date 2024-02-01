@@ -10,19 +10,19 @@ services:
     restart: no
     environment:
       # Put your oracle cloud credentials here
-      - OCI_USER =
-      - OCI_FINGERPRINT =
-      - OCI_TENANCY =
-      - OCI_REGION =
-      - OCI_KEY_FILE = ./keys/oracle_key.pem # DONT CHANGE THIS, EDIT THE FILE ON ./keys/oracle_key.pem TO CHANGE THE KEY
+      - OCI_USER=
+      - OCI_FINGERPRINT=
+      - OCI_TENANCY=
+      - OCI_REGION=
+      - OCI_KEY_FILE=./keys/oracle_key.pem # DONT CHANGE THIS, EDIT THE FILE ON ./keys/oracle_key.pem TO CHANGE THE KEY
 
       # Change these if you want to use different names for the resources
-      - INSTANCE_NAME = ORACLE-VPS
-      - VCN_NAME = ORACLE-VCN
-      - SUBNET_NAME = ORACLE-SUBNET
-      - GATEWAY_NAME = ORACLE-GW
-      - VNIC_NAME = ORACLE-VPS-VNIC
+      - INSTANCE_NAME=ORACLE-VPS
+      - VCN_NAME=ORACLE-VCN
+      - SUBNET_NAME=ORACLE-SUBNET
+      - GATEWAY_NAME=ORACLE-GW
+      - VNIC_NAME=ORACLE-VPS-VNIC
 
       # Optional discord webhook and user id to send a message when the script finishes
-      - DISCORD_WEBHOOK = # The discord webhook to send the message to (optional, if not set, no message will be sent)
-      - DISCORD_USER_ID = # The discord user to ping (optional, if not set, no one will be pinged)
+      - DISCORD_WEBHOOK= # The discord webhook to send the message to (optional, if not set, no message will be sent)
+      - DISCORD_USER_ID= # The discord user to ping (optional, if not set, no one will be pinged)

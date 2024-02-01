@@ -1,4 +1,3 @@
 oci
-python-dotenv
 cryptography
 requests

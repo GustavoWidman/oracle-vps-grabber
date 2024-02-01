@@ -5,10 +5,6 @@ import json
 import oci
 import os
 
-from dotenv import load_dotenv
-load_dotenv()
-
-
 class OracleInstancePrep:
 	def __init__(self):
 		self.oracle_config = {
