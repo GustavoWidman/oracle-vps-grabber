@@ -12,11 +12,11 @@ def main():
 			response = instance.create_instance()
 			return send_to_discord(True, response)
 		except Exception as e:
-			if e.status == 500 and e.message == 'Out of host capacity.':
+			if e.status == 500:
 				print("Retrying in 30 seconds...")
 				sleep(30)
 				return try_create()
-			elif e.status == 429 and e.message == 'Too many requests for the user':
+			elif e.status == 429:
 				counter += 1
 				print(f"Ratelimited, retrying in {30*counter} seconds...")
 				sleep(30*counter)

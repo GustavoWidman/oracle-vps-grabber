@@ -166,28 +166,28 @@ class OracleInstancePrep:
 		print("Getting availability domains...")
 		result = self.identity_client.list_availability_domains(self.compartment_id).data
 
-		if len(result) > 1:
-			print("Multiple availability domains found. Please choose one from the list:")
-			counter = 0
-			for result in result:
-				counter += 1
-				print(f"{counter}. {result.name}")
+		# if len(result) > 1:
+			# print("Multiple availability domains found. Please choose one from the list:")
+			# counter = 0
+			# for result in result:
+			# 	counter += 1
+			# 	print(f"{counter}. {result.name}")
 
-			try:
-				choice = int(input("Enter the number of the availability domain you want to use: "))
-			except:
-				print("Invalid choice. Please try again.")
-				self.get_av_domain()
+			# try:
+			# 	choice = int(input("Enter the number of the availability domain you want to use: "))
+			# except:
+			# 	print("Invalid choice. Please try again.")
+			# 	self.get_av_domain()
 
-			if choice > counter:
-				print("Invalid choice. Please try again.")
-				self.get_av_domain()
+			# if choice > counter:
+			# 	print("Invalid choice. Please try again.")
+			# 	self.get_av_domain()
 
-			print(f"Availability domain {result[choice - 1].name} chosen.")
-			return result[choice - 1].name
-		else:
-			print(f"Found only one availability domain ({result[0].name}), chosen.")
-			return result[0].name
+			# print(f"Availability domain {result[choice - 1].name} chosen.")
+			# return result[choice - 1].name
+		# else:
+		print(f"Found availability domain ({result[0].name}), chosen.")
+		return result[0].name
 
 
 	def get_image(self) -> str: #* Output: Image ID (latest_aarch64_image.id)
