@@ -25,8 +25,8 @@ def main():
 				sleep(30*counter)
 				return try_create(counter)
 			else:
-				return send_to_discord(False, e)
 				print(e)
+				return send_to_discord(False, e)
 
 	try_create()
 

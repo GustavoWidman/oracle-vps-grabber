@@ -12,11 +12,11 @@ load_dotenv()
 class OracleInstancePrep:
 	def __init__(self):
 		self.oracle_config = {
-			"user": os.environ['OCI_USER'],
-			"key_file": os.environ['OCI_KEY_FILE'],
-			"fingerprint": os.environ['OCI_FINGERPRINT'],
-			"tenancy": os.environ['OCI_TENANCY'],
-			"region": os.environ['OCI_REGION'],
+			"user": os.getenv('OCI_USER'),
+			"key_file": os.getenv('OCI_KEY_FILE'),
+			"fingerprint": os.getenv('OCI_FINGERPRINT'),
+			"tenancy": os.getenv('OCI_TENANCY'),
+			"region": os.getenv('OCI_REGION'),
 		}
 		self.compute_client = oci.core.ComputeClient(self.oracle_config)
 
