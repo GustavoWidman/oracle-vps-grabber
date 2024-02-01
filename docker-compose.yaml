@@ -6,6 +6,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./keys:/app/keys
+      - ./config.json:/app/config.json
     container_name: oracle-vps-grabber
     restart: no
     environment:
