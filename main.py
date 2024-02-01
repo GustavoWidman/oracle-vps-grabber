@@ -7,7 +7,8 @@ import os
 def main():
 	instance = OracleInstancePrep()
 
-	def try_create(counter = 0):
+	counter = 0
+	while True:
 		try:
 			response = instance.create_instance()
 			return send_to_discord(True, response)
@@ -15,17 +16,14 @@ def main():
 			if e.status == 500:
 				print("Retrying in 30 seconds...")
 				sleep(30)
-				return try_create()
+				counter = 0
 			elif e.status == 429:
 				counter += 1
 				print(f"Ratelimited, retrying in {30*counter} seconds...")
 				sleep(30*counter)
-				return try_create(counter)
 			else:
 				print(e)
 				return send_to_discord(False, e)
-
-	try_create()
 
 
 def send_to_discord(success, response):

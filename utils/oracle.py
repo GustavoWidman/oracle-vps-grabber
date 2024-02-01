@@ -52,7 +52,7 @@ class OracleInstancePrep:
 
 			# save all needed details for the instance to config.json so that it can be used later
 			with open('./keys/config.json', 'w') as f:
-				f.write(f'{{"vcn_id": "{self.vcn_id}", "subnet_id": "{self.subnet_id}", "gateway_id": "{self.gateway_id}", "public_key": "{self.public_key}", "image_id": "{self.image_id}", "av_domain": "{self.av_domain}", "compartment_id": "{self.compartment_id}", "name": "{self.INSTANCE_NAME}"}}, "vnic_name": "{self.VNIC_NAME}"')
+				f.write(f'{{"vcn_id": "{self.vcn_id}", "subnet_id": "{self.subnet_id}", "gateway_id": "{self.gateway_id}", "public_key": "{self.public_key}", "image_id": "{self.image_id}", "av_domain": "{self.av_domain}", "compartment_id": "{self.compartment_id}", "name": "{self.INSTANCE_NAME}", "vnic_name": "{self.VNIC_NAME}"}}')
 		else:
 			print("Recovering instance details from config.json...")
 			with open('./keys/config.json', 'r') as f:
