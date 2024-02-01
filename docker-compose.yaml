@@ -7,7 +7,7 @@ services:
     volumes:
       - ./keys:/app/keys
     container_name: oracle-vps-grabber
-    restart: never
+    restart: no
     environment:
       # Put your oracle cloud credentials here
       - OCI_USER =
