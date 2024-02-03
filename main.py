@@ -1,3 +1,4 @@
+from oci.exceptions import RequestException
 from utils.oracle import OracleInstancePrep
 from time import sleep
 import requests
@@ -12,6 +13,10 @@ def main():
 		try:
 			response = instance.create_instance()
 			return send_to_discord(True, response)
+		except RequestException as e:
+			counter += 1
+			print(f"Retrying in {60*counter} seconds...")
+			sleep(60*counter)
 		except Exception as e:
 			if e.status == 500:
 				print("Retrying in 30 seconds...")
