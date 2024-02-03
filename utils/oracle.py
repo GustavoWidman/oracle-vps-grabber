@@ -92,6 +92,12 @@ class OracleInstancePrep:
 				assign_private_dns_record = True,
 				assign_ipv6_ip = False,
 				display_name = self.VNIC_NAME
+			),
+			source_details = oci.core.models.InstanceSourceViaImageDetails(
+				image_id = self.image_id,
+				boot_volume_size_in_gbs = 200,
+				boot_volume_vpus_per_gb = 10,
+				source_type = "image"
 			)
 		)
 
