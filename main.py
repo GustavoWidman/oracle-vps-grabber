@@ -26,20 +26,26 @@ def main():
 				counter += 1
 				print(f"Ratelimited, retrying in {30*counter} seconds...")
 				sleep(30*counter)
+			elif e.status == 502:
+				send_to_discord(False, e)
+				print("Internal error, retrying in 60 seconds...")
+				sleep(60)
+				counter = 0
 			else:
 				print(e)
 				return send_to_discord(False, e)
 
 
-def send_to_discord(success, response):
+def send_to_discord(success, response, continued = False):
 	url = os.getenv("DISCORD_WEBHOOK")
 	user_id = os.getenv("DISCORD_USER_ID")
 	ping = f"<@{user_id}>\n" if user_id else ""
+	continue_message = "This error was ignored and we will be continuing as normal." if continued else ""
 
 	if not url: return
 
 	data = {
-		"content": f"{ping}Success: {success}\nResponse: {response}"
+		"content": f"{ping}Success: {success}\nResponse: {response}\n{continue_message}"
 	}
 	requests.post(url, json=data)
 
